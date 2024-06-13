@@ -4,5 +4,5 @@ The repository contains our code for the proposed method described in our paper 
 
 ![Model](figures/FieldReconstruction-1.png)
 
-![Model](figures/Pipeline.pdf)
+![Model](figures/Pipeline_r.png)
 
