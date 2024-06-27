@@ -1,13 +1,11 @@
 # No Bells, Just Whistles: Sports Field Registration by Leveraging Geometric Properties
 
 <div align="center">
-[![Conference](https://img.shields.io/badge/CVPR-2024)](https://openaccess.thecvf.com/content/CVPR2024W/CVsports/html/Gutierrez-Perez_No_Bells_Just_Whistles_Sports_Field_Registration_by_Leveraging_Geometric_CVPRW_2024_paper.html)
-[![arXiv](https://img.shields.io/badge/arXiv-<INDEX>-<COLOR>.svg)](https://arxiv.org/abs/2404.08401)
+
+[![Conference](https://img.shields.io/badge/CVPR-2024-6b8bc7.svg?style=for-the-badge)](https://openaccess.thecvf.com/content/CVPR2024W/CVsports/html/Gutierrez-Perez_No_Bells_Just_Whistles_Sports_Field_Registration_by_Leveraging_Geometric_CVPRW_2024_paper.html)
+[![arXiv](https://img.shields.io/badge/arXiv-2207.11709-b31b1b.svg?style=for-the-badge)](https://arxiv.org/abs/2404.08401)
+
 </div>
-
-The repository contains our code for the proposed method described in our paper [*No Bells, Just Whistles: Sports Field Registration by Leveraging Geometric Properties*](https://arxiv.org/abs/2404.08401).
-
-<p align="center"><img src=figures/FieldReconstruction-1.png width="70%" height="70%"></p>
 
 ## Abstract
 Broadcast sports field registration is traditionally addressed as a homography estimation task, mapping the visible image area to a planar field model, predominantly focusing on the main camera shot. Addressing the shortcomings of previous approaches, we propose a novel calibration pipeline enabling camera calibration using a 3D soccer field model and extending the process to assess the multiple-view nature of broadcast videos. Our approach begins with a keypoint generation pipeline derived from SoccerNet dataset annotations, leveraging the geometric properties of the court. Subsequently, we execute classical camera calibration through DLT algorithm in a minimalist fashion, without further refinement. Through extensive experimentation on real-world soccer broadcast datasets such as SoccerNet-Calibration, WorldCup 2014 and TS-WorldCup, our method demonstrates superior performance in both multiple- and single-view 3D camera calibration while maintaining competitive results in homography estimation compared to state-of-the-art techniques
