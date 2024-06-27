@@ -1,6 +1,6 @@
-# No-Bells-Just-Whistles
+# No Bells, Just Whistles: Sports Field Registration by Leveraging Geometric Properties
 
-### UNDER CONSTRUCTION
+[![arXiv](https://img.shields.io/badge/arXiv-<INDEX>-<COLOR>.svg)](https://arxiv.org/abs/<INDEX>)
 
 The repository contains our code for the proposed method described in our paper [*No Bells, Just Whistles: Sports Field Registration by Leveraging Geometric Properties*](https://arxiv.org/abs/2404.08401).
 
