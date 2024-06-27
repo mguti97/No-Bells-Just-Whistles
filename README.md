@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Conference](https://img.shields.io/badge/CVPR-2024-6b8bc7.svg?style=for-the-badge)](https://openaccess.thecvf.com/content/CVPR2024W/CVsports/html/Gutierrez-Perez_No_Bells_Just_Whistles_Sports_Field_Registration_by_Leveraging_Geometric_CVPRW_2024_paper.html)
+[![Conference](https://img.shields.io/badge/CVPRW-2024-6b8bc7.svg?style=for-the-badge)](https://openaccess.thecvf.com/content/CVPR2024W/CVsports/html/Gutierrez-Perez_No_Bells_Just_Whistles_Sports_Field_Registration_by_Leveraging_Geometric_CVPRW_2024_paper.html)
 [![arXiv](https://img.shields.io/badge/arXiv-2207.11709-b31b1b.svg?style=for-the-badge)](https://arxiv.org/abs/2404.08401)
 
 <p align="center"><img src=figures/FieldReconstruction-1.png  width=70% height=70%></p>
