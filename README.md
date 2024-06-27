@@ -1,6 +1,9 @@
 # No Bells, Just Whistles: Sports Field Registration by Leveraging Geometric Properties
 
-[![arXiv](https://img.shields.io/badge/arXiv-<INDEX>-<COLOR>.svg)](https://arxiv.org/abs/<INDEX>)
+<div align="center">
+[![Conference](https://img.shields.io/badge/CVPR-2024)](https://openaccess.thecvf.com/content/CVPR2024W/CVsports/html/Gutierrez-Perez_No_Bells_Just_Whistles_Sports_Field_Registration_by_Leveraging_Geometric_CVPRW_2024_paper.html)
+[![arXiv](https://img.shields.io/badge/arXiv-<INDEX>-<COLOR>.svg)](https://arxiv.org/abs/2404.08401)
+</div>
 
 The repository contains our code for the proposed method described in our paper [*No Bells, Just Whistles: Sports Field Registration by Leveraging Geometric Properties*](https://arxiv.org/abs/2404.08401).
 
