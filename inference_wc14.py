@@ -57,9 +57,9 @@ if __name__ == "__main__":
     files = glob.glob(os.path.join(args.root_dir + args.split, "*.jpg"))
 
     if args.use_gt:
-        zip_name_pred = args.save_dir + args.root_dir.split('/')[-2] + '/' + args.split + '_gt.zip'
+        zip_name_pred = args.save_dir + args.split + '_gt.zip'
     else:
-        zip_name_pred = args.save_dir + args.root_dir.split('/')[-2] + '/' + args.split + '_pred.zip'
+        zip_name_pred = args.save_dir + args.split + '_pred.zip'
 
 
     if args.use_gt:
