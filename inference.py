@@ -135,8 +135,9 @@ def project(frame, P):
     return frame
 
 
-def process_video(video_path, model_kp, model_line, save_path=None, display=False):
-    cap = cv2.VideoCapture(video_path)
+def process_input(input_path, input_type, model_kp, model_line, kp_threshold, line_threshold, save_path, display):
+
+    cap = cv2.VideoCapture(input_path)
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -144,10 +145,13 @@ def process_video(video_path, model_kp, model_line, save_path=None, display=Fals
 
     cam = FramebyFrameCalib(iwidth=frame_width, iheight=frame_height, denormalize=True)
 
-    if save_path:
-        out = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (frame_width, frame_height))
+    if input_type == 'video':
+        cap = cv2.VideoCapture(input_path)
+        if save_path:
+            out = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (frame_width, frame_height))
 
-    with tqdm(total=total_frames) as pbar:
+        pbar = tqdm(total=total_frames)
+
         while cap.isOpened():
             ret, frame = cap.read()
             if not ret:
@@ -164,35 +168,63 @@ def process_video(video_path, model_kp, model_line, save_path=None, display=Fals
                 cv2.imshow('Projected Frame', projected_frame)
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
+
             if save_path:
                 out.write(projected_frame)
 
             pbar.update(1)
 
-    cap.release()
-    if save_path:
-        out.release()
-    cv2.destroyAllWindows()
+        cap.release()
+        if save_path:
+            out.release()
+        cv2.destroyAllWindows()
+    elif input_type == 'image':
+        frame = cv2.imread(input_path)
+        if frame is None:
+            print(f"Error: Unable to read the image {input_path}")
+            return
+
+        final_params_dict = inference(cam, frame, model, model_l)
+        if final_params_dict is not None:
+            P = projection_from_cam_params(final_params_dict)
+            projected_frame = project(frame, P)
+        else:
+            projected_frame = frame
+
+        if save_path:
+            cv2.imwrite(save_path, projected_frame)
+        else:
+            plt.imshow(cv2.cvtColor(projected_frame, cv2.COLOR_BGR2RGB))
+            plt.axis('off')
+            plt.show()
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description="Process video and plot lines on each frame.")
+    parser = argparse.ArgumentParser(description="Process video or image and plot lines on each frame.")
     parser.add_argument("--cfg", type=str, required=True, help="Path to the (kp model) configuration file")
     parser.add_argument("--cfg_l", type=str, required=True, help="Path to the (line model) configuration file")
     parser.add_argument("--weights_kp", type=str, help="Path to the model for keypoint inference.")
     parser.add_argument("--weights_line", type=str, help="Path to the model for line projection.")
+    parser.add_argument("--kp_threshold", type=float, default=0.1486, help="Threshold for keypoint detection.")
+    parser.add_argument("--line_threshold", type=float, default=0.3880, help="Threshold for line detection.")
     parser.add_argument("--device", type=str, default="cuda:0", help="CPU or CUDA device index")
-    parser.add_argument("--video_path", type=str, help="Path to the input video file.")
+    parser.add_argument("--input_path", type=str, required=True, help="Path to the input video or image file.")
+    parser.add_argument("--input_type", type=str, choices=['video', 'image'], required=True,
+                        help="Type of input: 'video' or 'image'.")
     parser.add_argument("--save_path", type=str, default="", help="Path to save the processed video.")
     parser.add_argument("--display", action="store_true", help="Enable real-time display.")
     args = parser.parse_args()
 
-    video_path = args.video_path
+
+    input_path = args.input_path
+    input_type = args.input_type
     model_kp = args.weights_kp
     model_line = args.weights_line
     save_path = args.save_path
     device = args.device
-    display = args.display
+    display = args.display and input_type == 'video'
+    kp_threshold = args.kp_threshold
+    line_threshold = args.line_threshold
 
     cfg = yaml.safe_load(open(args.cfg, 'r'))
     cfg_l = yaml.safe_load(open(args.cfg_l, 'r'))
@@ -211,4 +243,4 @@ if __name__ == "__main__":
 
     transform2 = T.Resize((540, 960))
 
-    process_video(video_path, model_kp, model_line, save_path, display)
+    process_input(input_path, input_type, model_kp, model_line, kp_threshold, line_threshold, save_path, display)
