@@ -201,8 +201,6 @@ def process_input(input_path, input_type, model_kp, model_line, kp_threshold, li
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Process video or image and plot lines on each frame.")
-    parser.add_argument("--cfg", type=str, required=True, help="Path to the (kp model) configuration file")
-    parser.add_argument("--cfg_l", type=str, required=True, help="Path to the (line model) configuration file")
     parser.add_argument("--weights_kp", type=str, help="Path to the model for keypoint inference.")
     parser.add_argument("--weights_line", type=str, help="Path to the model for line projection.")
     parser.add_argument("--kp_threshold", type=float, default=0.1486, help="Threshold for keypoint detection.")
@@ -226,8 +224,8 @@ if __name__ == "__main__":
     kp_threshold = args.kp_threshold
     line_threshold = args.line_threshold
 
-    cfg = yaml.safe_load(open(args.cfg, 'r'))
-    cfg_l = yaml.safe_load(open(args.cfg_l, 'r'))
+    cfg = yaml.safe_load(open("config/hrnetv2_w48.yaml", 'r'))
+    cfg_l = yaml.safe_load(open("config/hrnetv2_w48_l.yaml", 'r'))
 
     loaded_state = torch.load(args.weights_kp, map_location=device)
     model = get_cls_net(cfg)
