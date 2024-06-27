@@ -54,10 +54,11 @@ Multiple-View
 
 On video:
 ``` shell
-python inference.py --weights yolov7.pt --conf 0.25 --img-size 640 --source yourvideo.mp4
+python inference.py --weights_kp $ --weights_line $ --input_path "examples/iniesta_sample.mp4" --input_type "video" --save_path "examples/iniesta_results.mp4"
 ```
 
 On image:
 ``` shell
-python detect.py --weights yolov7.pt --conf 0.25 --img-size 640 --source inference/images/horses.jpg
+python inference.py --weights_kp $ --weights_line $ --input_path "examples/messi_sample.jpg" --input_type "image" --save_path "examples/messi_results.jpg"
+```
 
