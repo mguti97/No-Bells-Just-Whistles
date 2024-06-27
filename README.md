@@ -17,6 +17,7 @@
     - [Datasets](#datasets)
     - [Evaluation](#evaluation)
 - [Requirements](#requirements)
+- [Citation](#citation)
 
 <hr>  
 
@@ -42,7 +43,7 @@ Single-View
 |Keypoints| WC14 | [**SV_FT_WC14_kp**](https://github.com/mguti97/No-Bells-Just-Whistles/releases/download/v1.0.0/SV_FT_WC14_kp) |
 |Lines| WC14 | [**SV_FT_WC14_lines**](https://github.com/mguti97/No-Bells-Just-Whistles/releases/download/v1.0.0/SV_FT_WC14_lines) |
 |Keypoints| TSWC | [**SV_FT_TSWC_kp**](https://github.com/mguti97/No-Bells-Just-Whistles/releases/download/v1.0.0/SV_FT_TSWC_kp) |
-|Lines| TSWC | [**SV_FT_TSWC_kp**](https://github.com/mguti97/No-Bells-Just-Whistles/releases/download/v1.0.0/SV_FT_TSWC_lines) |
+|Lines| TSWC | [**SV_FT_TSWC_lines**](https://github.com/mguti97/No-Bells-Just-Whistles/releases/download/v1.0.0/SV_FT_TSWC_lines) |
 
 Multiple-View
 | Model | Finetuned | Link |
@@ -64,5 +65,16 @@ On image:
 python inference.py --weights_kp "SV_kp" --weights_line "SV_lines" --input_path "examples/messi_sample.png" --input_type "image" --save_path "examples/messi_results.png"
 ```
 <hr>
+
+## Citation
+``` shell
+@inproceedings{gutierrez2024no,
+  title={No Bells Just Whistles: Sports Field Registration by Leveraging Geometric Properties},
+  author={Guti{\'e}rrez-P{\'e}rez, Marc and Agudo, Antonio},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={3325--3334},
+  year={2024}
+}
+```
 
 
