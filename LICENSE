@@ -1,0 +1,16 @@
+All the scripts contained in this distributions are Free Software
+under the GNU General Public License, version 2, June 1991
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; version 2, June 1991 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+If you use this code for a scientific publication, please reference the original paper:
+"No Bells Just Whistles: Sports Field Registration by Leveraging Geometric Properties"
+Marc Gutiérrez-Pérez, Antonio Agudo, 
+Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2024.
