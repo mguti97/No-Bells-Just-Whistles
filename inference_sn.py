@@ -109,7 +109,7 @@ if __name__ == "__main__":
                 line_coords = get_keypoints_from_heatmap_batch_maxpool_l(heatmaps_l[:,:-1,:,:])
                 kp_dict = coords_to_dict(kp_coords, threshold=0.01)
                 lines_dict = coords_to_dict(line_coords, threshold=0.01)
-                final_dict = complete_keypoints(kp_dict, lines_dict, w=image.width, h=image.height, normalize=True)
+                final_dict = complete_keypoints(kp_dict, lines_dict, w=image.width, h=image.height)
 
                 cam.update(final_dict[0])
                 final_params_dict = cam.heuristic_voting()
@@ -138,6 +138,7 @@ if __name__ == "__main__":
         model_l.eval()
 
         transform = T.Resize((540, 960))
+        cam = FramebyFrameCalib(960, 540)
 
         with zipfile.ZipFile(zip_name_pred, 'w') as zip_file:
             samples, complete = 0., 0.
@@ -159,7 +160,6 @@ if __name__ == "__main__":
                     lines_dict = coords_to_dict(line_coords, threshold=0.388)
                     final_dict = complete_keypoints(kp_dict, lines_dict, w=w, h=h)
 
-                    cam = Camera(final_dict[0], w, h)
                     final_params_dict = cam.heuristic_voting()
                     #final_params_dict = cam.calibrate(5)
 
