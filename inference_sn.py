@@ -66,22 +66,22 @@ if __name__ == "__main__":
 
 
     if args.main_cam_only:
-        zip_name = args.save_dir + args.root_dir.split('/')[-2] + '/' + args.split + '_main.zip'
+        zip_name = args.save_dir + args.split + '_main.zip'
     else:
-        zip_name = args.save_dir + args.root_dir.split('/')[-2] + '/' + args.split + '.zip'
+        zip_name = args.save_dir + args.split + '.zip'
 
     if args.use_gt:
         if args.main_cam_only:
-            zip_name_pred = args.save_dir + args.root_dir.split('/')[-2] + '/' + args.split + '_main_gt.zip'
+            zip_name_pred = args.save_dir + args.split + '_main_gt.zip'
         else:
-            zip_name_pred = args.save_dir + args.root_dir.split('/')[-2] + '/' + args.split + '_gt.zip'
+            zip_name_pred = args.save_dir + args.split + '_gt.zip'
     else:
         if args.main_cam_only:
-            zip_name_pred = args.save_dir + args.root_dir.split('/')[-2] + '/' + args.split + '_main_pred.zip'
+            zip_name_pred = args.save_dir + args.split + '_main_pred.zip'
         else:
-            zip_name_pred = args.save_dir + args.root_dir.split('/')[-2] + '/' + args.split + '_pred.zip'
+            zip_name_pred = args.save_dir + args.split + '_pred.zip'
 
-    print(f"Saving results in {args.save_dir + args.root_dir.split('/')[-2] + '/'}")
+    print(f"Saving results in {args.save_dir}")
     print(f"file: {zip_name_pred}")
 
     if args.use_gt:
@@ -109,7 +109,7 @@ if __name__ == "__main__":
                 line_coords = get_keypoints_from_heatmap_batch_maxpool_l(heatmaps_l[:,:-1,:,:])
                 kp_dict = coords_to_dict(kp_coords, threshold=0.01)
                 lines_dict = coords_to_dict(line_coords, threshold=0.01)
-                final_dict = complete_keypoints(kp_dict, lines_dict, w=image.width, h=image.height)
+                final_dict = complete_keypoints(kp_dict, lines_dict, w=image.width, h=image.height, normalize=True)
 
                 cam.update(final_dict[0])
                 final_params_dict = cam.heuristic_voting()
@@ -160,6 +160,7 @@ if __name__ == "__main__":
                     lines_dict = coords_to_dict(line_coords, threshold=0.388)
                     final_dict = complete_keypoints(kp_dict, lines_dict, w=w, h=h)
 
+                    cam.update(final_dict[0])
                     final_params_dict = cam.heuristic_voting()
                     #final_params_dict = cam.calibrate(5)
 
@@ -180,13 +181,5 @@ if __name__ == "__main__":
 
 
     print(f'Completed {complete} / {samples}')
-
-
-
-
-
-
-
-
 
 
