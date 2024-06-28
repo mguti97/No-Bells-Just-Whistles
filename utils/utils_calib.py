@@ -35,7 +35,7 @@ line_world_coords_3D = [[[0., 54.16, 0.], [16.5, 54.16, 0.]], [[16.5, 13.84, 0.]
 
 keypoint_world_coords_2D = [[x - 52.5, y - 34] for x, y in keypoint_world_coords_2D]
 keypoint_aux_world_coords_2D = [[x - 52.5, y - 34] for x, y in keypoint_aux_world_coords_2D]
-line_world_coords_3D = [[x - 52.5, y - 34] for x, y in line_world_coords_3D]
+line_world_coords_3D = [[[x1 - 52.5, y1 - 34, z1], [x2 - 52.5, y2 - 34, z2]] for [[x1, y1, z1], [x2,y2,z2]] in line_world_coords_3D]
 
 def rotation_matrix_to_pan_tilt_roll(rotation):
     """
@@ -250,14 +250,14 @@ class FramebyFrameCalib:
                 self.rotation, _ = cv2.Rodrigues(rvecs)
                 self.position = - np.transpose(self.rotation) @ tvecs
 
-            #pan, tilt, roll = rotation_matrix_to_pan_tilt_roll(self.rotation)
-            #pan = np.rad2deg(pan)
-            #tilt = np.rad2deg(tilt)
-            #roll = np.rad2deg(roll)
+            pan, tilt, roll = rotation_matrix_to_pan_tilt_roll(self.rotation)
+            pan = np.rad2deg(pan)
+            tilt = np.rad2deg(tilt)
+            roll = np.rad2deg(roll)
 
-            cam_params = {#"pan_degrees": pan,
-                          #"tilt_degrees": tilt,
-                          #"roll_degrees": roll,
+            cam_params = {"pan_degrees": pan,
+                          "tilt_degrees": tilt,
+                          "roll_degrees": roll,
                           "x_focal_length": mtx[0,0],
                           "y_focal_length": mtx[1,1],
                           "principal_point": [self.image_width/2., self.image_height/2.],
