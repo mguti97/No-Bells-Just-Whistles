@@ -35,12 +35,14 @@ def get_homographies(file_paths):
 
 
 def make_file_name(file):
+    file =  "TS-WorldCup/" + file.split("TS-WorldCup/")[-1]
     splits = file.split('/')
-    side = splits[7]
-    match = splits[8]
-    image = splits[9]
-    frame = 'IMG_' + image.split('.')[0].split('_')[-2]
+    side = splits[3]
+    match = splits[4]
+    image = splits[5]
+    frame = image.split('_homography.npy')[0]
     return side + '-' + match + '-' + frame + '.json'
+
 
 def pan_tilt_roll_to_orientation(pan, tilt, roll):
     """

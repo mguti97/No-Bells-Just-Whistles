@@ -41,6 +41,8 @@ def parse_args():
                         help="Model (lines) weigths to use")
     parser.add_argument("--cuda", type=str, default="cuda:0",
                         help="CUDA device index (default: 'cuda:0')")
+    parser.add_argument("--kp_th", type=float, default=0.3457, help="Keypoint threshold")
+    parser.add_argument("--line_th", type=float, default=0.370, help="Line threshold")
     parser.add_argument("--batch", type=int, default=1, help="Batch size")
     parser.add_argument("--num_workers", type=int, default=4, help="Number of workers")
     parser.add_argument('--use_gt', action='store_true', help='Use ground truth (default: False)')
@@ -84,8 +86,8 @@ if __name__ == "__main__":
                 heatmaps_l = torch.tensor(heatmaps_l).unsqueeze(0)
                 kp_coords = get_keypoints_from_heatmap_batch_maxpool(heatmaps[:,:-1,:,:])
                 line_coords = get_keypoints_from_heatmap_batch_maxpool_l(heatmaps_l[:,:-1,:,:])
-                kp_dict = coords_to_dict(kp_coords, threshold=0.006)
-                lines_dict = coords_to_dict(line_coords, threshold=0.105)
+                kp_dict = coords_to_dict(kp_coords, threshold=0.0378)
+                lines_dict = coords_to_dict(line_coords, threshold=0.0634)
                 final_dict = complete_keypoints(kp_dict, lines_dict, w=w, h=h, normalize=True)
 
                 json_data = json.dumps(final_dict)

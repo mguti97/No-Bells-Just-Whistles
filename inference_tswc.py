@@ -41,6 +41,8 @@ def parse_args():
                         help="Model (lines) weigths to use")
     parser.add_argument("--cuda", type=str, default="cuda:0",
                         help="CUDA device index (default: 'cuda:0')")
+    parser.add_argument("--kp_th", type=float, default=0.3457, help="Keypoint threshold")
+    parser.add_argument("--line_th", type=float, default=0.370, help="Line threshold")
     parser.add_argument("--batch", type=int, default=1, help="Batch size")
     parser.add_argument("--num_workers", type=int, default=4, help="Number of workers")
 
@@ -73,10 +75,11 @@ def get_homographies(file_paths):
 
 
 def make_file_name(file):
+    file =  "TS-WorldCup/" + file.split("TS-WorldCup/")[-1]
     splits = file.split('/')
-    side = splits[8]
-    match = splits[9]
-    image = splits[10]
+    side = splits[3]
+    match = splits[4]
+    image = splits[5]
     frame = 'IMG_' + image.split('.')[0].split('_')[-1]
     return side + '-' + match + '-' + frame
 
@@ -91,7 +94,7 @@ if __name__ == "__main__":
     files = get_files(seqs)
     homographies = get_homographies(seqs)
 
-    zip_name_pred = args.save_dir + args.root_dir.split('/')[-2] + '/' + args.split + '_pred.zip'
+    zip_name_pred = args.save_dir + args.split + '_pred.zip'
 
     device = torch.device(args.cuda if torch.cuda.is_available() else 'cpu')
     cfg = yaml.safe_load(open(args.cfg, 'r'))
@@ -125,8 +128,8 @@ if __name__ == "__main__":
 
                 kp_coords = get_keypoints_from_heatmap_batch_maxpool(heatmaps[:,:-1,:,:])
                 line_coords = get_keypoints_from_heatmap_batch_maxpool_l(heatmaps_l[:,:-1,:,:])
-                kp_dict = coords_to_dict(kp_coords, threshold=0.3457, ground_plane_only=True)
-                lines_dict = coords_to_dict(line_coords, threshold=0.370, ground_plane_only=True)
+                kp_dict = coords_to_dict(kp_coords, threshold=args.kp_th, ground_plane_only=True)
+                lines_dict = coords_to_dict(line_coords, threshold=args.line_th, ground_plane_only=True)
                 final_dict = complete_keypoints(kp_dict, lines_dict, w=w, h=h, normalize=True)
 
                 json_data = json.dumps(final_dict)

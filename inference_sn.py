@@ -44,6 +44,8 @@ def parse_args():
                         help="Model (lines) weigths to use")
     parser.add_argument("--cuda", type=str, default="cuda:0",
                         help="CUDA device index (default: 'cuda:0')")
+    parser.add_argument("--kp_th", type=float, default=0.1486, help="Keypoint threshold")
+    parser.add_argument("--line_th", type=float, default=0.388, help="Line threshold")
     parser.add_argument("--max_reproj_err", type=float, default="25")
     parser.add_argument("--main_cam_only", action='store_true')
     parser.add_argument('--use_gt', action='store_true', help='Use ground truth annotations (default: False)')
@@ -156,8 +158,8 @@ if __name__ == "__main__":
 
                     kp_coords = get_keypoints_from_heatmap_batch_maxpool(heatmaps[:,:-1,:,:])
                     line_coords = get_keypoints_from_heatmap_batch_maxpool_l(heatmaps_l[:,:-1,:,:])
-                    kp_dict = coords_to_dict(kp_coords, threshold=0.1486)
-                    lines_dict = coords_to_dict(line_coords, threshold=0.388)
+                    kp_dict = coords_to_dict(kp_coords, threshold=args.kp_th)
+                    lines_dict = coords_to_dict(line_coords, threshold=args.line_th)
                     final_dict = complete_keypoints(kp_dict, lines_dict, w=w, h=h)
 
                     cam.update(final_dict[0])

@@ -62,7 +62,7 @@ def projection_from_cam_params(final_params_dict):
     return P
 
 
-def inference(cam, frame, model, model_l):
+def inference(cam, frame, model, model_l, kp_threshold, line_threshold):
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     frame = Image.fromarray(frame)
 
@@ -78,8 +78,8 @@ def inference(cam, frame, model, model_l):
 
     kp_coords = get_keypoints_from_heatmap_batch_maxpool(heatmaps[:,:-1,:,:])
     line_coords = get_keypoints_from_heatmap_batch_maxpool_l(heatmaps_l[:,:-1,:,:])
-    kp_dict = coords_to_dict(kp_coords, threshold=0.1486)
-    lines_dict = coords_to_dict(line_coords, threshold=0.388)
+    kp_dict = coords_to_dict(kp_coords, threshold=kp_threshold)
+    lines_dict = coords_to_dict(line_coords, threshold=line_threshold)
     final_dict = complete_keypoints(kp_dict, lines_dict, w=w, h=h, normalize=True)
 
     cam.update(final_dict[0])
@@ -157,7 +157,7 @@ def process_input(input_path, input_type, model_kp, model_line, kp_threshold, li
             if not ret:
                 break
 
-            final_params_dict = inference(cam, frame, model, model_l)
+            final_params_dict = inference(cam, frame, model, model_l, kp_threshold, line_threshold)
             if final_params_dict is not None:
                 P = projection_from_cam_params(final_params_dict)
                 projected_frame = project(frame, P)
@@ -203,8 +203,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process video or image and plot lines on each frame.")
     parser.add_argument("--weights_kp", type=str, help="Path to the model for keypoint inference.")
     parser.add_argument("--weights_line", type=str, help="Path to the model for line projection.")
-    parser.add_argument("--kp_threshold", type=float, default=0.1486, help="Threshold for keypoint detection.")
-    parser.add_argument("--line_threshold", type=float, default=0.3880, help="Threshold for line detection.")
+    parser.add_argument("--kp_threshold", type=float, default=0.12, help="Threshold for keypoint detection.")
+    parser.add_argument("--line_threshold", type=float, default=0.15, help="Threshold for line detection.")
     parser.add_argument("--device", type=str, default="cuda:0", help="CPU or CUDA device index")
     parser.add_argument("--input_path", type=str, required=True, help="Path to the input video or image file.")
     parser.add_argument("--input_type", type=str, choices=['video', 'image'], required=True,
