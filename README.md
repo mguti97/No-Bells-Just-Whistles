@@ -24,7 +24,7 @@
 
 ## Abstract
 Broadcast sports field registration is traditionally addressed as a homography estimation task, mapping the visible image area to a planar field model, predominantly focusing on the main camera shot. Addressing the shortcomings of previous approaches, we propose a novel calibration pipeline enabling camera calibration using a 3D soccer field model and extending the process to assess the multiple-view nature of broadcast videos. Our approach begins with a keypoint generation pipeline derived from SoccerNet dataset annotations, leveraging the geometric properties of the court. Subsequently, we execute classical camera calibration through DLT algorithm in a minimalist fashion, without further refinement. Through extensive experimentation on real-world soccer broadcast datasets such as SoccerNet-Calibration, WorldCup 2014 and TS-WorldCup, our method demonstrates superior performance in both multiple- and single-view 3D camera calibration while maintaining competitive results in homography estimation compared to state-of-the-art techniques
-<p align="center"><img src=figures/Pipeline_r.png></p>
+<p align="center"><img src=figures/Pipeline_r.png  width=90% height=90%></p>
 <strong>Overview of our proposed framework. Top: Training data generation pipeline. Beginning with SoccerNet annotations,
 we utilize field line extraction and ellipse fitting to establish a hierarchical structure for computing each set of keypoints. Bottom: The
 encoder-decoder networks produce heatmaps for keypoints and extremities of soccer field lines to extract their positions in the image space.
