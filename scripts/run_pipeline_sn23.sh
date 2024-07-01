@@ -2,12 +2,12 @@
 
 # Set parameters
 # ROOT_DIR="datasets/WC-2014"
-ROOT_DIR="/home/mgutierrez/Desktop/datasets/calibration-2023/"
+ROOT_DIR="datasets/calibration-2023/"
 SPLIT="test"
 CFG="config/hrnetv2_w48.yaml"
 CFG_L="config/hrnetv2_w48_l.yaml"
-WEIGHTS_KP="../mycalib/weights/MyCalibv3/MV_kp"
-WEIGHTS_L="../mycalib/weights/MyCalibLinesv3/MV_lines"
+WEIGHTS_KP="weights/MV_kp"
+WEIGHTS_L="weights/MV_lines"
 SAVE_DIR="inference/inference_3D/inference_sn23/"
 DEVICE="cuda:0"
 GT_FILE="${SAVE_DIR}${SPLIT}.zip"
