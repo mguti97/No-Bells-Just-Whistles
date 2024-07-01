@@ -14,9 +14,9 @@ from ellipse import LsqEllipse
 from itertools import product
 from functools import reduce
 
-from mycalib.utils.utils_field import _draw_field
-from mycalib.utils.utils_heatmap import generate_gaussian_array_vectorized
-from mycalib.utils.utils_geometry import line_intersection, ellipse_intersection, find_tangent_points, are_points_collinear
+from utils.utils_field import _draw_field
+from utils.utils_heatmap import generate_gaussian_array_vectorized
+from utils.utils_geometry import line_intersection, ellipse_intersection, find_tangent_points, are_points_collinear
 
 
 class KeypointsDB(object):

@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 from scipy.optimize import linear_sum_assignment
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
-from mycalib.utils.utils_geometry import line_intersection
-from mycalib.utils.utils_heatmap import generate_gaussian_array_vectorized_l
+from utils.utils_geometry import line_intersection
+from utils.utils_heatmap import generate_gaussian_array_vectorized_l
 
 
 class LineKeypointsDB(object):

@@ -14,8 +14,8 @@ from ellipse import LsqEllipse
 from itertools import product
 from functools import reduce
 
-from mycalib.utils.utils_field import _draw_field
-from mycalib.utils.utils_heatmap import generate_gaussian_array_vectorized_l
+from utils.utils_field import _draw_field
+from utils.utils_heatmap import generate_gaussian_array_vectorized_l
 
 
 class LineKeypointsWCDB(object):
