@@ -144,7 +144,9 @@ conda activate NBJWCalib
 ```
 
 ### PIP
+```shell
 pip install -r requirements.txt
+```
 
 <hr>
 
