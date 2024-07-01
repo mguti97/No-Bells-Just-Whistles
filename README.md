@@ -90,7 +90,7 @@ tar -zxvf soccer_data.tar.gz
 See https://github.com/MM4SPA/tvcalib to download the additional segment annotations in SoccerNet-Calibration format.
 
 #### TS-WorldCup
-See https://github.com/ericsujw/KpSFR to download TS-WorldCup dataset
+Download the [TS-WorldCup](https://cgv.cs.nthu.edu.tw/KpSFR_data/TS-WorldCup.zip) dataset
 
 <hr>
 
