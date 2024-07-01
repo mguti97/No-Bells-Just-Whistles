@@ -14,8 +14,9 @@
 - [Abstract](#abstract)
 - [Model Weights](#weights)
 - [Inference / Demo](#inference)
-- [Reproduce Paper Results](#reproduce-paper-results)
+- [Experiments](#experiments)
     - [Datasets](#datasets)
+    - [Metrics](#metrics)
     - [Evaluation](#evaluation)
 - [Requirements](#requirements)
 - [Citation](#citation)
@@ -66,6 +67,44 @@ On image:
 python inference.py --weights_kp "SV_kp" --weights_line "SV_lines" --input_path "examples/messi_sample.png" --input_type "image" --save_path "examples/messi_results.png"
 ```
 <hr>
+
+## Experiments
+### Datasets
+#### SoccerNet-Calibration-V3:
+To download the 2022 version, switch the downloader's task to "calibration".
+``` shell
+from SoccerNet.Downloader import SoccerNetDownloader
+mySoccerNetDownloader = SoccerNetDownloader(LocalDirectory="</nfs/data/soccernet>")
+mySoccerNetDownloader.downloadDataTask(task="calibration-2023", split=["train","valid","test"])
+```
+See https://github.com/MM4SPA/tvcalib to download the camera-type annotations for SoccerNet-Calibration-2022.
+
+#### WorldCup 2014
+```shell
+mkdir -p data/datasets/wc14-test && cd data/datasets/wc14-test/
+# Images and provided homography matrices from test split
+wget https://nhoma.github.io/data/soccer_data.tar.gz
+tar -zxvf soccer_data.tar.gz
+```
+
+See https://github.com/MM4SPA/tvcalib to download the additional segment annotations in SoccerNet-Calibration format.
+
+#### TS-WorldCup
+See https://github.com/ericsujw/KpSFR to download TS-WorldCup dataset
+
+<hr>
+
+### Metrics
+#### Segment Reprojection Error
+See https://github.com/SoccerNet/sn-calibration for details on the evaluation metric.
+
+#### IoU, Projection error and Reprojection error:
+For the Homography Estimation evaluation, we adopt the approach outlined at https://github.com/ericsujw/KpSFR. Minor modifications of the used script can be seen in
+```shell model/metrics.py ```
+
+<hr>
+
+### Evalutation 
 
 ## Citation
 ``` shell
