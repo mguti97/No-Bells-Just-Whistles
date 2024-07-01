@@ -2,12 +2,12 @@
 
 # Set parameters
 # ROOT_DIR="datasets/WC-2014"
-ROOT_DIR="/mnt/dades/TS-WorldCup/"
+ROOT_DIR="datasets/TS-WorldCup/"
 SPLIT="test"
 CFG="config/hrnetv2_w48.yaml"
 CFG_L="config/hrnetv2_w48_l.yaml"
-WEIGHTS_KP="../mycalib/weights/MyCalibv2-Finetune-TSWC/SV_FT_TSWC_kp"
-WEIGHTS_L="../mycalib/weights/MyCalibLinesv2-Finetune-TSWC/SV_FT_TSWC_lines"
+WEIGHTS_KP="weights/SV_FT_TSWC_kp"
+WEIGHTS_L="weights/SV_FT_TSWC_lines"
 SAVE_DIR="inference/inference_2D/inference_tswc/"
 DEVICE="cuda:0"
 PRED_FILE="${SAVE_DIR}${SPLIT}_pred.zip"
