@@ -106,7 +106,7 @@ For the Homography Estimation evaluation, we adopt the approach outlined at http
 
 ### Evaluation
 We provide scripts (scripts/) to reproduce the paper's results for the presented approach.
-Make sure to change the dataset location on the bash scripts, default is set as ```"datasets/calibration-2023/"```.
+Make sure to change the dataset location on the bash scripts, default is set as ```"datasets/calibration-2023/"```, and the location of model weights, default is set as ```weights/MV_kp```.
 
 ```shell
 #Multi-view camera parameter estimation for SN-Calib-2023
