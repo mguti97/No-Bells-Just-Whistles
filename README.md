@@ -59,7 +59,7 @@ Multiple-View
 
 On video:
 ``` shell
-python inference.py --weights_kp "SV_kp" --weights_line "SV_lines" --input_path "examples/iniesta_sample.mp4" --input_type "video" --save_path "examples/iniesta_results.mp4"
+python inference.py --weights_kp "SV_kp" --weights_line "SV_lines" --input_path "examples/iniesta_sample.mp4" --input_type "video" --display
 ```
 
 On image:
