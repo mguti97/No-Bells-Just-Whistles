@@ -100,14 +100,56 @@ See https://github.com/SoccerNet/sn-calibration for details on the evaluation me
 
 #### IoU, Projection error and Reprojection error:
 For the Homography Estimation evaluation, we adopt the approach outlined at https://github.com/ericsujw/KpSFR. Minor modifications of the used script can be seen in
-```shell model/metrics.py ```
+```model/metrics.py ```
 
 <hr>
 
-### Evalutation 
+### Evaluation
+We provide scripts (scripts/) to reproduce the paper's results for the presented approach.
+Make sure to change the dataset location on the bash scripts, default is set as ```"datasets/calibration-2023/"```.
+
+```shell
+#Multi-view camera parameter estimation for SN-Calib-2023
+chmod +x scripts/run_pipeline_sn23.sh
+./scripts/run_pipeline_sn23.sh
+
+#Single-view camera parameter estimation for SN-Calib-2022
+chmod +x scripts/run_pipeline_sn22.sh
+./scripts/run_pipeline_sn22.sh
+
+#WorldCup 2014 as camera parameter estimation task
+#Change the dataset location inside "scripts/run_pipeline_sn23.sh" file, i.e. "datasets/WC-2014"
+#Change the save directory inside "scripts/run_pipeline_sn23.sh" file to "inference/inference_3D/inference_wc14"
+chmod +x scripts/run_pipeline_sn22.sh
+./scripts/run_pipeline_sn22.sh
+
+#WorldCup 2014 homography estimation task
+chmod +x scripts/run_pipeline_wc14.sh
+./scripts/run_pipeline_wc14.sh
+
+#TS-WorldCup homography estimation task
+chmod +x scripts/run_pipeline_tswc.sh
+./scripts/run_pipeline_tswc.sh
+```
+
+Task results will be printed on screen.
+
+<hr>
+
+## Requirements
+### [Conda Environment](https://docs.conda.io/en/latest/)
+```shell
+conda env create -f NBJWCalib.yml
+conda activate NBJWCalib
+```
+
+### PIP
+pip install -r requirements.txt
+
+<hr>
 
 ## Citation
-``` shell
+```shell
 @inproceedings{gutierrez2024no,
   title={No Bells Just Whistles: Sports Field Registration by Leveraging Geometric Properties},
   author={Guti{\'e}rrez-P{\'e}rez, Marc and Agudo, Antonio},
