@@ -81,7 +81,7 @@ See https://github.com/MM4SPA/tvcalib to download the camera-type annotations fo
 
 #### WorldCup 2014
 ```shell
-mkdir -p data/datasets/wc14-test && cd data/datasets/wc14-test/
+mkdir -p datasets/WC-2014/test && cd datasets/WC-2014/test
 # Images and provided homography matrices from test split
 wget https://nhoma.github.io/data/soccer_data.tar.gz
 tar -zxvf soccer_data.tar.gz
