@@ -127,7 +127,7 @@ def project(frame, P):
 
     XEllipse1 = np.array(pts1, np.int32)
     XEllipse2 = np.array(pts2, np.int32)
-    XEllipse3 = np.array(pts2, np.int32)
+    XEllipse3 = np.array(pts3, np.int32)
     frame = cv2.polylines(frame, [XEllipse1], False, (255, 0, 0), 3)
     frame = cv2.polylines(frame, [XEllipse2], False, (255, 0, 0), 3)
     frame = cv2.polylines(frame, [XEllipse3], False, (255, 0, 0), 3)
