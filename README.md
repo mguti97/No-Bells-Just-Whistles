@@ -154,12 +154,13 @@ pip install -r requirements.txt
 
 ## Citation
 ```shell
-@inproceedings{gutierrez2024no,
-  title={No Bells, Just Whistles: Sports Field Registration by Leveraging Geometric Properties},
-  author={Guti{\'e}rrez-P{\'e}rez, Marc and Agudo, Antonio},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages={3325--3334},
-  year={2024}
+@InProceedings{Gutierrez-Perez_2024_CVPR,
+    author    = {Guti\'errez-P\'erez, Marc and Agudo, Antonio},
+    title     = {No Bells Just Whistles: Sports Field Registration by Leveraging Geometric Properties},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2024},
+    pages     = {3325-3334}
 }
 ```
 
