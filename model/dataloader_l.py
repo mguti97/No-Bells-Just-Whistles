@@ -9,8 +9,8 @@ from torchvision.transforms import v2
 from torch.utils.data import Dataset
 from PIL import Image
 
-from mycalib.utils.utils_lines import LineKeypointsDB
-from mycalib.utils.utils_linesWC import LineKeypointsWCDB
+from utils.utils_lines import LineKeypointsDB
+from utils.utils_linesWC import LineKeypointsWCDB
 
 
 
