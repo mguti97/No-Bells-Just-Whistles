@@ -12,8 +12,8 @@ from torchvision.transforms import v2
 from torch.utils.data import Dataset
 from PIL import Image
 
-from mycalib.utils.utils_keypoints import KeypointsDB
-from mycalib.utils.utils_keypointsWC import KeypointsWCDB
+from utils.utils_keypoints import KeypointsDB
+from utils.utils_keypointsWC import KeypointsWCDB
 
 
 class SoccerNetCalibrationDataset(Dataset):
