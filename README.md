@@ -145,7 +145,7 @@ conda activate NBJWCalib
 
 ### PIP
 ```shell
-python -m venv env
+python -m venv NBJWCalib
 source env/bin/activate
 pip install -r requirements.txt
 ```
